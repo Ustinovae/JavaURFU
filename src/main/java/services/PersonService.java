@@ -1,16 +1,10 @@
 package services;
 
 import DAO.Impl.PersonDAOImpl;
-import charts.StudentAgeStatistic;
+import charts.statistics.StudentAgeStatistic;
 import entities.Person;
-import org.hibernate.Session;
-import utils.HibernateUtil;
 
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.Root;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 

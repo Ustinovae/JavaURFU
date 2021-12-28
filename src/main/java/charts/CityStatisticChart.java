@@ -1,5 +1,6 @@
-import charts.CityStatistic;
-import charts.StudentAgeStatistic;
+package charts;
+
+import charts.statistics.CityStatistic;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -10,15 +11,16 @@ import org.jfree.chart.renderer.category.BarRenderer;
 import org.jfree.chart.ui.RectangleInsets;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
+import services.CityService;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
-public class StudentAgeStatisticChart {
-    public JPanel createDemoPanel(List<StudentAgeStatistic> studentAgeStatistics)
+public class CityStatisticChart {
+    public JPanel createDemoPanel(List<CityStatistic> cityStatistics)
     {
-        JFreeChart chart = createChart(createDataset(studentAgeStatistics));
+        JFreeChart chart = createChart(createDataset(cityStatistics));
         chart.setPadding(new RectangleInsets(4, 8, 2, 2));
         ChartPanel panel = new ChartPanel(chart);
         panel.setFillZoomRectangle(true);
@@ -27,11 +29,22 @@ public class StudentAgeStatisticChart {
         return panel;
     }
 
-    private CategoryDataset createDataset(List<StudentAgeStatistic> studentAgeStatistics)
+    public void paintGraphic(){
+        var cityService = new CityService();
+        CityStatisticChart cityStatisticChart = new CityStatisticChart();
+        var cityStatistics = cityService.getCountStudentsOnCourseFromCities(1l);
+        JPanel panel = cityStatisticChart.createDemoPanel(cityStatistics);
+        var jFrame = new JFrame();
+        jFrame.getContentPane().add(panel);
+        jFrame.setSize(600, 600);
+        jFrame.setVisible(true);
+    }
+
+    private CategoryDataset createDataset(List<CityStatistic> cityStatistics)
     {
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        for (StudentAgeStatistic c: studentAgeStatistics){
-            dataset.addValue(c.getCountAge(), "Число студентов", String.valueOf(c.getAge()));
+        for (CityStatistic c: cityStatistics){
+            dataset.addValue(c.getCountStudent(), "Число студентов", c.getCityName());
         }
         return dataset;
     }
@@ -39,8 +52,8 @@ public class StudentAgeStatisticChart {
     private JFreeChart createChart(CategoryDataset dataset)
     {
         JFreeChart chart = ChartFactory.createBarChart(
-                "Число студентов по возрастам",
-                "Возраст",                   // x-axis label
+                "Число студентов по городам",
+                "Город",                   // x-axis label
                 "Число студентов",                // y-axis label
                 dataset);
         chart.setBackgroundPaint(Color.white);

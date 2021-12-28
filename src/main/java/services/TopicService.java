@@ -1,6 +1,8 @@
 package services;
 
 import DAO.Impl.TopicDAOImpl;
+import charts.statistics.NumberOfCorrectAnswers;
+import charts.statistics.NumberOfSolvedTasks;
 import entities.Task;
 import entities.Topic;
 import org.hibernate.Session;
@@ -32,6 +34,14 @@ public class TopicService {
 
     public void connectTaskWithTopic(Long id_topic, Task task) throws SQLException {
         topicDAO.connectTaskWithTopic(id_topic, task);
+    }
+
+    public List<NumberOfCorrectAnswers> getNumberOfCorrectAnswer(long topic_id){
+        return topicDAO.getNumberOfCorrectAnswer(topic_id);
+    }
+
+    public List<NumberOfSolvedTasks> getNumberOfSolvedTasksInTopic(long topic_id){
+        return topicDAO.getNumberOfSolvedTasksInTopic(topic_id);
     }
 
     public Collection<Task> getTasksFromTopic(Long id_Topic){

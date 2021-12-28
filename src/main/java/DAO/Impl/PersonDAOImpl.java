@@ -1,10 +1,7 @@
 package DAO.Impl;
 
 import DAO.PersonDAO;
-import charts.CityStatistic;
-import charts.StudentAgeStatistic;
-import entities.City;
-import entities.Course;
+import charts.statistics.StudentAgeStatistic;
 import entities.Person;
 import entities.StudentRegistration;
 import org.hibernate.Session;
@@ -17,7 +14,6 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 import java.util.List;
 
 public class PersonDAOImpl implements PersonDAO {

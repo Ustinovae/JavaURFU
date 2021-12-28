@@ -1,4 +1,4 @@
-package charts;
+package charts.statistics;
 
 import java.time.LocalDate;
 import java.time.Period;

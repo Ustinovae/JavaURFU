@@ -1,4 +1,4 @@
-package charts;
+package charts.statistics;
 
 public class CityStatistic {
     private String cityName;

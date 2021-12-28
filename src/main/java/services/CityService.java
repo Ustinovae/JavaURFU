@@ -1,7 +1,7 @@
 package services;
 
 import DAO.Impl.CityDAOImpl;
-import charts.CityStatistic;
+import charts.statistics.CityStatistic;
 import entities.City;
 import entities.Person;
 

@@ -1,19 +1,16 @@
 package DAO.Impl;
 
 import DAO.CityDAO;
-import charts.CityStatistic;
+import charts.statistics.CityStatistic;
 import entities.City;
 import entities.Person;
 import entities.StudentRegistration;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.CriteriaQuery;
 import utils.HibernateUtil;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Root;
-import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
